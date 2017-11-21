@@ -1,0 +1,9 @@
+<div *ngIf="hasMessage">
+  <div class="alert {{alertNotification.type}} fade in">
+    <!--<a href="#" class="close" data-dismiss="alert">&times;</a>-->
+    <strong>{{alertNotification.header}}</strong> :: {{alertNotification.title}}
+    <ul>
+      <li *ngFor="let message of alertNotification.messages">{{message}}</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../src/app/index.ts"],"names":[],"mappings":"AAAA,cAAc,4BAA4B,CAAC;AAC3C,cAAc,oCAAoC,CAAC;AACnD,cAAc,uCAAuC,CAAC","sourcesContent":["export * from './build-motion-core.module';\r\nexport * from './components/alert/alert.component';\r\nexport * from './components/component-base.component';\r\n"]}

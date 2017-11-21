@@ -1,0 +1,33 @@
+{
+  "name": "buildmotion-core",
+  "version": "1.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "transpile": "ngc",
+    "build": "npm run transpile"
+  },
+  "keywords": [
+    "angular",
+    "buildmotion",
+    "matt",
+    "vaughn",
+    "custom",
+    "angular",
+    "module"
+  ],
+  "author": "Matt Vaughn",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buildmotion/buildmotion-core"
+  },
+  "peerDependencies": {
+    "@angular/core": "^5.0.2",
+    "@angular/router": "^5.0.2",
+    "@angular/http": "^5.0.1",
+    "angular-rules-engine": "^2.0.10",
+    "buildmotion-foundation": "^1.0.11",
+    "buildmotion-logging": "^1.1.1"
+  }
+}
