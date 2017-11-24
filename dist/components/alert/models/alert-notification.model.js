@@ -1,6 +1,9 @@
 import { AlertTypes } from './alert-types.constants';
-var AlertNotification = /** @class */ (function () {
+var AlertNotification = (function () {
     function AlertNotification(header, title, messages, type) {
+        this.type = AlertTypes.Information;
+        this.messages = new Array();
+        this.showAlert = false;
         if (type) {
             this.type = type;
         }

@@ -1,20 +1,18 @@
 {
   "name": "buildmotion-core",
-  "version": "1.0.2",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "transpile": "ngc",
-    "build": "npm run transpile"
-  },
+  "version": "1.0.4",
+  "description": "An Angular custom module to contain core elements for BuildMotion Angular applications. Relies on the buildmotion-foundation package.",
+  "main": "bundles/buildmotion-core.umd.js",
+  "module": "index.js",
+  "typings": "inex.d.ts",
   "keywords": [
     "angular",
     "buildmotion",
-    "matt",
-    "vaughn",
-    "custom",
-    "angular",
-    "module"
+    "build motion",
+    "matt vaughn",
+    "custom angular modules",
+    "angularlicious",
+    "angularlicio.us"
   ],
   "author": "Matt Vaughn",
   "license": "MIT",
@@ -23,11 +21,10 @@
     "url": "https://github.com/buildmotion/buildmotion-core"
   },
   "peerDependencies": {
-    "@angular/core": "^5.0.2",
-    "@angular/router": "^5.0.2",
     "@angular/http": "^5.0.1",
+    "@angular/router": "^5.0.2",
     "angular-rules-engine": "^2.0.10",
-    "buildmotion-foundation": "^1.0.11",
+    "buildmotion-foundation": "^2.0.1",
     "buildmotion-logging": "^1.1.1"
   }
 }

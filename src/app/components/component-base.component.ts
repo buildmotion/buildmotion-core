@@ -27,6 +27,7 @@ export class ComponentBase {
      * @param message The message to display to the user.
      */
     createErrorResponse(message: string): ErrorResponse {
+        this.loggingService.log(this.componentName, Severity.Information, `Preparing to create error response for component.`)
         let response: ErrorResponse = new ErrorResponse();
         response.Message = message;
         return response;
@@ -43,12 +44,14 @@ export class ComponentBase {
      * Exception: any;
      */
     handleServiceErrors(errorResponse: ErrorResponse, serviceContext?: ServiceContext) {
+        this.loggingService.log(this.componentName, Severity.Information, `Preparing to handle service errors for component.`)
         if (serviceContext && serviceContext.hasErrors()) {
-            // retrieving error messages from the ServiceContext/ValidationContext;
+            this.loggingService.log(this.componentName, Severity.Information, `Retrieving error messages from the ServiceContext/ValidationContext;`)
             const messages = this.retrieveServiceContextErrorMessages(serviceContext);
             this.alertNotification = new AlertNotification('Errors', errorResponse.Message, messages, AlertTypes.Warning);
         } else {
-                if (errorResponse && errorResponse.Message) {
+            if (errorResponse && errorResponse.Message) {
+                this.loggingService.log(this.componentName, Severity.Information, `Retrieving error messages from the [ErrorResponse].`)
                 const errors = this.retrieveResponseErrorMessages(errorResponse);
                 this.alertNotification = new AlertNotification('Error', errorResponse.Message, errors, AlertTypes.Warning);
                 this.loggingService.log(this.componentName, Severity.Error, `Error: ${errorResponse.Message}`);

@@ -19,25 +19,24 @@
     "stripInternal": true,
     /* Module Resolution Options */
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": "",
     "paths": {
       "@angular/core": [
         "node_modules/@angular/core"
-      ],
-      "rxjs/*": [
-        "node_modules/rxjs/*"
       ]
     },
     /* Source Map Options */
     "inlineSources": true,
     /* Experimental Options */
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
   "files": [
     "./src/app/index.ts"
   ],
   "angularCompilerOptions": {
-    "strictMetadataEmit": true,
-    "genDir": "aot-dist"
+    "skipTemplateCodegen": true,
+		"strictMetadataEmit": true,
+		"genDir": "aot-dist"
   }
 }

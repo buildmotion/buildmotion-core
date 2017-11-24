@@ -1,8 +1,90 @@
-import { MessageType } from 'angular-rules-engine';
-import { ErrorResponse } from 'buildmotion-foundation';
-import { Severity } from 'buildmotion-logging';
-import { AlertNotification } from './alert/models/alert-notification.model';
-import { AlertTypes } from './alert/models/alert-types.constants';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('angular-rules-engine'), require('buildmotion-foundation'), require('buildmotion-logging')) :
+	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common', 'angular-rules-engine', 'buildmotion-foundation', 'buildmotion-logging'], factory) :
+	(factory((global.buildmotionCore = {}),global.ng.core,global.ng.common,global.angularRulesEngine,global.buildmotionFoundation,global.buildmotionLogging));
+}(this, (function (exports,core,common,angularRulesEngine,buildmotionFoundation,buildmotionLogging) { 'use strict';
+
+/**
+ * Use to provide the alert type information for the AlertNotification and AlertComponent.
+ */
+var AlertTypes = (function () {
+    function AlertTypes() {
+    }
+    AlertTypes.Information = 'alert-info';
+    AlertTypes.Warning = 'alert-warning';
+    AlertTypes.Danger = 'alert-danger';
+    AlertTypes.Success = 'alert-success';
+    return AlertTypes;
+}());
+
+var AlertNotification = (function () {
+    function AlertNotification(header, title, messages, type) {
+        this.type = AlertTypes.Information;
+        this.messages = new Array();
+        this.showAlert = false;
+        if (type) {
+            this.type = type;
+        }
+        this.header = header;
+        this.title = title;
+        if (messages) {
+            this.messages = messages;
+        }
+        if (this.header && this.title) {
+            this.showAlert = true; // used to trigger the display of the notification.
+        }
+    }
+    return AlertNotification;
+}());
+
+var AlertComponent = (function () {
+    function AlertComponent() {
+        this.alertNotification = new AlertNotification('', '');
+        // @Input() set showAlert(showAlert: boolean){this.hasMessage = showAlert || false; };
+        this.hasMessage = false;
+    }
+    AlertComponent.prototype.ngOnInit = function () {
+    };
+    AlertComponent.decorators = [
+        { type: core.Component, args: [{
+                    selector: 'buildmotion-alert',
+                    template: "<div *ngIf=\"hasMessage\">\n  <div class=\"alert {{alertNotification.type}} fade in\">\n    <!--<a href=\"#\" class=\"close\" data-dismiss=\"alert\">&times;</a>-->\n    <strong>{{alertNotification.header}}</strong> :: {{alertNotification.title}}\n    <ul>\n      <li *ngFor=\"let message of alertNotification.messages\">{{message}}</li>\n    </ul>\n  </div>\n</div>"
+                },] },
+    ];
+    /** @nocollapse */
+    AlertComponent.ctorParameters = function () { return []; };
+    AlertComponent.propDecorators = {
+        "alertNotification": [{ type: core.Input },],
+        "hasMessage": [{ type: core.Input },],
+    };
+    return AlertComponent;
+}());
+
+var BuildMotionCoreModule = (function () {
+    function BuildMotionCoreModule() {
+    }
+    BuildMotionCoreModule.decorators = [
+        { type: core.NgModule, args: [{
+                    imports: [
+                        common.CommonModule,
+                        angularRulesEngine.AngularRulesEngineModule,
+                        buildmotionFoundation.BuildMotionFoundationModule,
+                        buildmotionLogging.BuildMotionLoggingModule
+                    ],
+                    declarations: [
+                        AlertComponent
+                    ],
+                    exports: [
+                        AlertComponent
+                    ],
+                    schemas: [core.NO_ERRORS_SCHEMA],
+                },] },
+    ];
+    /** @nocollapse */
+    BuildMotionCoreModule.ctorParameters = function () { return []; };
+    return BuildMotionCoreModule;
+}());
+
 var ComponentBase = (function () {
     function ComponentBase(componentName, loggingService, router) {
         this.loggingService = loggingService;
@@ -23,8 +105,8 @@ var ComponentBase = (function () {
          * @param message The message to display to the user.
          */
     function (message) {
-        this.loggingService.log(this.componentName, Severity.Information, "Preparing to create error response for component.");
-        var response = new ErrorResponse();
+        this.loggingService.log(this.componentName, buildmotionLogging.Severity.Information, "Preparing to create error response for component.");
+        var response = new buildmotionFoundation.ErrorResponse();
         response.Message = message;
         return response;
     };
@@ -59,18 +141,18 @@ var ComponentBase = (function () {
          * Exception: any;
          */
     function (errorResponse, serviceContext) {
-        this.loggingService.log(this.componentName, Severity.Information, "Preparing to handle service errors for component.");
+        this.loggingService.log(this.componentName, buildmotionLogging.Severity.Information, "Preparing to handle service errors for component.");
         if (serviceContext && serviceContext.hasErrors()) {
-            this.loggingService.log(this.componentName, Severity.Information, "Retrieving error messages from the ServiceContext/ValidationContext;");
+            this.loggingService.log(this.componentName, buildmotionLogging.Severity.Information, "Retrieving error messages from the ServiceContext/ValidationContext;");
             var messages = this.retrieveServiceContextErrorMessages(serviceContext);
             this.alertNotification = new AlertNotification('Errors', errorResponse.Message, messages, AlertTypes.Warning);
         }
         else {
             if (errorResponse && errorResponse.Message) {
-                this.loggingService.log(this.componentName, Severity.Information, "Retrieving error messages from the [ErrorResponse].");
+                this.loggingService.log(this.componentName, buildmotionLogging.Severity.Information, "Retrieving error messages from the [ErrorResponse].");
                 var errors = this.retrieveResponseErrorMessages(errorResponse);
                 this.alertNotification = new AlertNotification('Error', errorResponse.Message, errors, AlertTypes.Warning);
-                this.loggingService.log(this.componentName, Severity.Error, "Error: " + errorResponse.Message);
+                this.loggingService.log(this.componentName, buildmotionLogging.Severity.Error, "Error: " + errorResponse.Message);
             }
         }
     };
@@ -92,7 +174,7 @@ var ComponentBase = (function () {
     function (serviceContext) {
         var messages = Array();
         serviceContext.Messages.forEach(function (e) {
-            if (e.MessageType === MessageType.Error && e.DisplayToUser) {
+            if (e.MessageType === angularRulesEngine.MessageType.Error && e.DisplayToUser) {
                 messages.push(e.Message);
             }
         });
@@ -150,7 +232,7 @@ var ComponentBase = (function () {
             this.router.navigate([routeName]);
         }
         catch (error) {
-            this.loggingService.log(this.componentName, Severity.Error, "Error while attempting to navigate to [" + routeName + "] route from " + this.componentName + ". Error: " + error.toString());
+            this.loggingService.log(this.componentName, buildmotionLogging.Severity.Error, "Error while attempting to navigate to [" + routeName + "] route from " + this.componentName + ". Error: " + error.toString());
         }
     };
     /**
@@ -168,12 +250,19 @@ var ComponentBase = (function () {
         this.handleServiceErrors(response, undefined);
     };
     ComponentBase.prototype.finishRequest = function (message) {
-        this.loggingService.log(this.componentName, Severity.Information, this.componentName + ": " + message);
+        this.loggingService.log(this.componentName, buildmotionLogging.Severity.Information, this.componentName + ": " + message);
     };
     ComponentBase.prototype.showAlertMessage = function (message) {
         alert(message);
     };
     return ComponentBase;
 }());
-export { ComponentBase };
-//# sourceMappingURL=component-base.component.js.map
+
+exports.BuildMotionCoreModule = BuildMotionCoreModule;
+exports.AlertComponent = AlertComponent;
+exports.ComponentBase = ComponentBase;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+//# sourceMappingURL=buildmotion-core.umd.js.map
