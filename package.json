@@ -39,7 +39,7 @@
     "@angular/router": "^5.0.2",
     "angular-actions": "^2.0.0",
     "angular-rules-engine": "^2.1.1",
-    "buildmotion-foundation": "^2.0.10",
-    "buildmotion-logging": "^2.0.6"
+    "buildmotion-foundation": "^2.0.11",
+    "buildmotion-logging": "^2.0.7"
   }
 }
