@@ -1,6 +1,6 @@
 {
   "name": "buildmotion-core",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "An Angular custom module to contain core elements for BuildMotion Angular applications. Relies on the buildmotion-foundation package.",
   "main": "bundles/buildmotion-core.umd.js",
   "module": "index.js",
@@ -23,8 +23,8 @@
   "peerDependencies": {
     "@angular/http": "^5.0.1",
     "@angular/router": "^5.0.2",
-    "angular-rules-engine": "^2.0.10",
-    "buildmotion-foundation": "^2.0.1",
-    "buildmotion-logging": "^2.0.2"
+    "angular-rules-engine": "^2.1.1",
+    "buildmotion-foundation": "^2.0.8",
+    "buildmotion-logging": "^2.0.5"
   }
 }
