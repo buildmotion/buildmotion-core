@@ -37,7 +37,7 @@
   "dependencies": {
     "@angular/http": "^5.0.1",
     "@angular/router": "^5.0.2",
-    "angular-rules-engine": "^2.0.10",
+    "angular-rules-engine": "^2.1.1",
     "buildmotion-foundation": "^2.0.2",
     "buildmotion-logging": "^2.0.2"
   }

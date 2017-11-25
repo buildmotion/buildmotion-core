@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('angular-rules-engine'), require('buildmotion-foundation'), require('buildmotion-logging')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common', 'angular-rules-engine', 'buildmotion-foundation', 'buildmotion-logging'], factory) :
-	(factory((global.buildmotionCore = {}),global.ng.core,global.ng.common,global.angularRulesEngine,global.buildmotionFoundation,global.buildmotionLogging));
-}(this, (function (exports,core,common,angularRulesEngine,buildmotionFoundation,buildmotionLogging) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('buildmotion-foundation'), require('buildmotion-logging'), require('angular-rules-engine')) :
+	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common', 'buildmotion-foundation', 'buildmotion-logging', 'angular-rules-engine'], factory) :
+	(factory((global.buildmotionCore = {}),global.ng.core,global.ng.common,global.buildmotionFoundation,global.buildmotionLogging,global.angularRulesEngine));
+}(this, (function (exports,core,common,buildmotionFoundation,buildmotionLogging,angularRulesEngine) { 'use strict';
 
 /**
  * Use to provide the alert type information for the AlertNotification and AlertComponent.
@@ -67,7 +67,6 @@ var BuildMotionCoreModule = (function () {
         { type: core.NgModule, args: [{
                     imports: [
                         common.CommonModule,
-                        angularRulesEngine.AngularRulesEngineModule,
                         buildmotionFoundation.BuildMotionFoundationModule,
                         buildmotionLogging.BuildMotionLoggingModule
                     ],

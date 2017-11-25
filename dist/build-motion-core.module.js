@@ -1,6 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AngularRulesEngineModule } from 'angular-rules-engine';
 import { BuildMotionFoundationModule } from 'buildmotion-foundation';
 import { BuildMotionLoggingModule } from 'buildmotion-logging';
 import { AlertComponent } from './components/alert/alert.component';
@@ -11,7 +10,6 @@ var BuildMotionCoreModule = (function () {
         { type: NgModule, args: [{
                     imports: [
                         CommonModule,
-                        AngularRulesEngineModule,
                         BuildMotionFoundationModule,
                         BuildMotionLoggingModule
                     ],
