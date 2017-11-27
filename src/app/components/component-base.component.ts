@@ -1,5 +1,7 @@
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { LoggingService } from 'buildmotion-logging';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/filter';
 
 import { MessageType } from 'angular-rules-engine';
 import { ServiceContext } from 'angular-rules-engine';
@@ -12,6 +14,7 @@ import { AlertTypes } from './alert/models/alert-types.constants';
 export class ComponentBase {
     componentName: string;
     alertNotification: AlertNotification;
+    navSubscription: Subscription;
 
     constructor(
         componentName: string,
@@ -20,6 +23,16 @@ export class ComponentBase {
     ) {
         this.componentName = componentName;
         this.alertNotification = new AlertNotification('', '');
+
+        var e = this.router.events.filter(event => event instanceof NavigationEnd);
+        if(e && e instanceof NavigationEnd) {
+            this.googleAnalyticsPageview(e);
+        }
+    }
+
+    googleAnalyticsPageview(event: NavigationEnd) {
+        (<any>window).ga('set', 'page', event.urlAfterRedirects);
+        (<any>window).ga('send', 'pageview');
     }
 
     /**

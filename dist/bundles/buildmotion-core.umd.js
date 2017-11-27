@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('buildmotion-foundation'), require('buildmotion-logging'), require('angular-rules-engine')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common', 'buildmotion-foundation', 'buildmotion-logging', 'angular-rules-engine'], factory) :
-	(factory((global.buildmotionCore = {}),global.ng.core,global.ng.common,global.buildmotionFoundation,global.buildmotionLogging,global.angularRulesEngine));
-}(this, (function (exports,core,common,buildmotionFoundation,buildmotionLogging,angularRulesEngine) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('buildmotion-foundation'), require('buildmotion-logging'), require('@angular/router'), require('rxjs/add/operator/filter'), require('angular-rules-engine')) :
+	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common', 'buildmotion-foundation', 'buildmotion-logging', '@angular/router', 'rxjs/add/operator/filter', 'angular-rules-engine'], factory) :
+	(factory((global.buildmotionCore = {}),global.ng.core,global.ng.common,global.buildmotionFoundation,global.buildmotionLogging,global.ng.router,null,global.angularRulesEngine));
+}(this, (function (exports,core,common,buildmotionFoundation,buildmotionLogging,router,filter,angularRulesEngine) { 'use strict';
 
 /**
  * Use to provide the alert type information for the AlertNotification and AlertComponent.
@@ -85,12 +85,20 @@ var BuildMotionCoreModule = (function () {
 }());
 
 var ComponentBase = (function () {
-    function ComponentBase(componentName, loggingService, router) {
+    function ComponentBase(componentName, loggingService, router$$1) {
         this.loggingService = loggingService;
-        this.router = router;
+        this.router = router$$1;
         this.componentName = componentName;
         this.alertNotification = new AlertNotification('', '');
+        var e = this.router.events.filter(function (event) { return event instanceof router.NavigationEnd; });
+        if (e && e instanceof router.NavigationEnd) {
+            this.googleAnalyticsPageview(e);
+        }
     }
+    ComponentBase.prototype.googleAnalyticsPageview = function (event) {
+        window.ga('set', 'page', event.urlAfterRedirects);
+        window.ga('send', 'pageview');
+    };
     /**
      * Use to create a simple [ErrorResponse] with the specified message.
      * @param message The message to display to the user.

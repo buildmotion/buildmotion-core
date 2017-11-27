@@ -1,3 +1,5 @@
+import { NavigationEnd } from '@angular/router';
+import 'rxjs/add/operator/filter';
 import { MessageType } from 'angular-rules-engine';
 import { ErrorResponse } from 'buildmotion-foundation';
 import { Severity } from 'buildmotion-logging';
@@ -9,7 +11,15 @@ var ComponentBase = (function () {
         this.router = router;
         this.componentName = componentName;
         this.alertNotification = new AlertNotification('', '');
+        var e = this.router.events.filter(function (event) { return event instanceof NavigationEnd; });
+        if (e && e instanceof NavigationEnd) {
+            this.googleAnalyticsPageview(e);
+        }
     }
+    ComponentBase.prototype.googleAnalyticsPageview = function (event) {
+        window.ga('set', 'page', event.urlAfterRedirects);
+        window.ga('send', 'pageview');
+    };
     /**
      * Use to create a simple [ErrorResponse] with the specified message.
      * @param message The message to display to the user.

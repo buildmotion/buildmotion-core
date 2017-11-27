@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "transpile": "ngc",
-    "package": "rollup -c",
+    "package": "rollup -c rollup.config.js",
     "minify": "uglifyjs dist/bundles/buildmotion-core.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/buildmotion-core.umd.min.js",
     "build": "npm run transpile && npm run package && npm run minify"
   },

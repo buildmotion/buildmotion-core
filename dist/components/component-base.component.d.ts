@@ -1,5 +1,7 @@
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { LoggingService } from 'buildmotion-logging';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/filter';
 import { ServiceContext } from 'angular-rules-engine';
 import { ErrorResponse } from 'buildmotion-foundation';
 import { AlertNotification } from './alert/models/alert-notification.model';
@@ -8,7 +10,9 @@ export declare class ComponentBase {
     router: Router;
     componentName: string;
     alertNotification: AlertNotification;
+    navSubscription: Subscription;
     constructor(componentName: string, loggingService: LoggingService, router: Router);
+    googleAnalyticsPageview(event: NavigationEnd): void;
     /**
      * Use to create a simple [ErrorResponse] with the specified message.
      * @param message The message to display to the user.

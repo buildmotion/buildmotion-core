@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "es2015",
+    "target": "es5", /* specify the ES standard */
+    "module": "es2015", /* specify the type of module */
     "lib": [
       "es2015",
       "dom"
@@ -35,7 +35,7 @@
     "./src/app/index.ts"
   ],
   "angularCompilerOptions": {
-    "skipTemplateCodegen": true,
+    "skipTemplateCodegen": true, /* do not produce any *.ngfactory.ts files */
 		"strictMetadataEmit": true,
 		"genDir": "aot-dist"
   }
