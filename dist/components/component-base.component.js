@@ -17,8 +17,14 @@ var ComponentBase = (function () {
         }
     }
     ComponentBase.prototype.googleAnalyticsPageview = function (event) {
-        window.ga('set', 'page', event.urlAfterRedirects);
-        window.ga('send', 'pageview');
+        if (event && event.urlAfterRedirects) {
+            this.loggingService.log(this.componentName, Severity.Information, "Preparing to set [Google Analytics] page view for [" + event.urlAfterRedirects + "].");
+            window.ga('set', 'page', event.urlAfterRedirects);
+            window.ga('send', 'pageview');
+        }
+        else {
+            this.loggingService.log(this.componentName, Severity.Warning, "Failed to set [Google Analytics] page view.");
+        }
     };
     /**
      * Use to create a simple [ErrorResponse] with the specified message.

@@ -31,8 +31,14 @@ export class ComponentBase {
     }
 
     googleAnalyticsPageview(event: NavigationEnd) {
-        (<any>window).ga('set', 'page', event.urlAfterRedirects);
-        (<any>window).ga('send', 'pageview');
+        if(event && event.urlAfterRedirects) {
+            this.loggingService.log(this.componentName, Severity.Information, `Preparing to set [Google Analytics] page view for [${event.urlAfterRedirects}].`);
+            (<any>window).ga('set', 'page', event.urlAfterRedirects);
+            (<any>window).ga('send', 'pageview');
+        } else {
+            this.loggingService.log(this.componentName, Severity.Warning, `Failed to set [Google Analytics] page view.`);
+        }
+
     }
 
     /**
