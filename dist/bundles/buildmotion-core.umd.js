@@ -273,6 +273,8 @@ var ComponentBase = (function () {
 
 exports.BuildMotionCoreModule = BuildMotionCoreModule;
 exports.AlertComponent = AlertComponent;
+exports.AlertNotification = AlertNotification;
+exports.AlertTypes = AlertTypes;
 exports.ComponentBase = ComponentBase;
 
 Object.defineProperty(exports, '__esModule', { value: true });
