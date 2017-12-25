@@ -32,6 +32,7 @@
     "@angular/core": "^5.0.2",
     "rollup": "^0.50.0",
     "typescript": "^2.4.2",
+    "typescript-dotnet-commonjs": "^3.2.4",
     "uglify-js": "^3.1.10"
   },
   "dependencies": {
@@ -41,6 +42,6 @@
     "angular-actions": "^2.0.0",
     "angular-rules-engine": "^2.1.1",
     "buildmotion-foundation": "^2.0.11",
-    "buildmotion-logging": "^2.0.7"
+    "buildmotion-logging": "^2.0.8"
   }
 }
