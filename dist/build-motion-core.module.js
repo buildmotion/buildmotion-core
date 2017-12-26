@@ -1,4 +1,4 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BuildMotionFoundationModule } from 'buildmotion-foundation';
 import { BuildMotionLoggingModule } from 'buildmotion-logging';
@@ -19,7 +19,7 @@ var BuildMotionCoreModule = (function () {
                     exports: [
                         AlertComponent
                     ],
-                    schemas: [NO_ERRORS_SCHEMA],
+                    schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
                 },] },
     ];
     /** @nocollapse */
