@@ -11,7 +11,7 @@ var AlertComponent = (function () {
     AlertComponent.decorators = [
         { type: Component, args: [{
                     selector: 'buildmotion-alert',
-                    template: "<div *ngIf=\"hasMessage \" class=\"alert {{alertNotification.type}} \" role=\"alert \">\n  <div class=\"container \">\n    <button type=\"button \" class=\"close \" data-dismiss=\"alert \" aria-label=\"Close \">\n      <span aria-hidden=\"true \">\n        <i class=\"now-ui-icons ui-1_simple-remove \"></i>\n      </span>\n    </button>\n    <div class=\"alert-icon \">\n      <i class=\"now-ui-icons ui-1_bell-53 \"></i>\n    </div>\n    <strong>{{alertNotification.header}}</strong> :: {{alertNotification.title}}\n    <ul>\n      <li *ngFor=\"let message of alertNotification.messages \">{{message}}</li>\n    </ul>\n  </div>\n</div>"
+                    template: "<div *ngIf=\"hasMessage \" class=\"alert {{alertNotification.type}} \" role=\"alert \">\n  <div class=\"container \">\n    <div class=\"alert-icon \">\n      <i class=\"now-ui-icons ui-1_bell-53 \"></i>\n    </div>\n    <strong>{{alertNotification.header}}</strong> :: {{alertNotification.title}}\n    <ul>\n      <li *ngFor=\"let message of alertNotification.messages \">{{message}}</li>\n    </ul>\n    <button type=\"button \" class=\"close \" data-dismiss=\"alert \" aria-label=\"Close \">\n      <span aria-hidden=\"true \">\n        <i class=\"now-ui-icons ui-1_simple-remove \"></i>\n      </span>\n    </button>\n  </div>\n</div>"
                 },] },
     ];
     /** @nocollapse */
