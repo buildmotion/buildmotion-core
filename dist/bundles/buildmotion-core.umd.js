@@ -95,6 +95,44 @@ var ComponentBase = (function () {
             this.googleAnalyticsPageview(e);
         }
     }
+    /**
+     * Use to send an analytic event to [Google Analytics].
+     * @param category A category is a name that you supply as a way to group objects that you want to track. Typically, you will use the same category name multiple times over related UI elements that you want to group under a given category.
+     * @param action Use the action parameter to name the type of event or interaction you want to track for a particular web object (i.e., play, stop, pause, download). A unique event is determined by a unique action name. You can use duplicate action names across categories, but this can affect how unique events are calculated. See the suggestions below and the Implicit Count section for more details.
+     * @param label Provide additional information for events that you want to track, such as the movie title in the video examples above, or the name of a file when tracking downloads. All labels are listed independently from their parent categories and actions. This provides you with another useful way to segment the event data for your reports. All labels are listed independently from their parent categories and actions. This provides you with another useful way to segment the event data for your reports.
+     * @param value
+     *
+     * More information at: https://support.google.com/analytics/answer/1033068
+     * or https://developers.google.com/analytics/devguides/collection/analyticsjs/events
+     */
+    /**
+         * Use to send an analytic event to [Google Analytics].
+         * @param category A category is a name that you supply as a way to group objects that you want to track. Typically, you will use the same category name multiple times over related UI elements that you want to group under a given category.
+         * @param action Use the action parameter to name the type of event or interaction you want to track for a particular web object (i.e., play, stop, pause, download). A unique event is determined by a unique action name. You can use duplicate action names across categories, but this can affect how unique events are calculated. See the suggestions below and the Implicit Count section for more details.
+         * @param label Provide additional information for events that you want to track, such as the movie title in the video examples above, or the name of a file when tracking downloads. All labels are listed independently from their parent categories and actions. This provides you with another useful way to segment the event data for your reports. All labels are listed independently from their parent categories and actions. This provides you with another useful way to segment the event data for your reports.
+         * @param value
+         *
+         * More information at: https://support.google.com/analytics/answer/1033068
+         * or https://developers.google.com/analytics/devguides/collection/analyticsjs/events
+         */
+    ComponentBase.prototype.googleAnalyticsSendEvent = /**
+         * Use to send an analytic event to [Google Analytics].
+         * @param category A category is a name that you supply as a way to group objects that you want to track. Typically, you will use the same category name multiple times over related UI elements that you want to group under a given category.
+         * @param action Use the action parameter to name the type of event or interaction you want to track for a particular web object (i.e., play, stop, pause, download). A unique event is determined by a unique action name. You can use duplicate action names across categories, but this can affect how unique events are calculated. See the suggestions below and the Implicit Count section for more details.
+         * @param label Provide additional information for events that you want to track, such as the movie title in the video examples above, or the name of a file when tracking downloads. All labels are listed independently from their parent categories and actions. This provides you with another useful way to segment the event data for your reports. All labels are listed independently from their parent categories and actions. This provides you with another useful way to segment the event data for your reports.
+         * @param value
+         *
+         * More information at: https://support.google.com/analytics/answer/1033068
+         * or https://developers.google.com/analytics/devguides/collection/analyticsjs/events
+         */
+    function (category, action, label, value) {
+        window.ga('send', 'event', {
+            eventCategory: category,
+            eventLabel: label,
+            eventAction: action,
+            eventValue: value
+        });
+    };
     ComponentBase.prototype.googleAnalyticsPageview = function (event) {
         if (event && event.urlAfterRedirects) {
             this.loggingService.log(this.componentName, buildmotionLogging.Severity.Information, "Preparing to set [Google Analytics] page view for [" + event.urlAfterRedirects + "].");
