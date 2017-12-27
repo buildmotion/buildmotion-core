@@ -41,7 +41,8 @@ export class ComponentBase {
      * or https://developers.google.com/analytics/devguides/collection/analyticsjs/events 
      */
     public googleAnalyticsSendEvent(category: string, action: string, label: string, value: number) {
-        (<any>window).ga('send', 'event', {
+        (<any>window).ga('send', {
+            hitType: 'event',
             eventCategory: category,
             eventLabel: label,
             eventAction: action,
