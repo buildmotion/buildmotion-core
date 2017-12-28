@@ -43,7 +43,7 @@ export class ComponentBase {
     public googleAnalyticsSendEvent(category: string, action: string, label: string, value: number) {
         (<any>window).ga('send', {
             hitType: 'event',
-            eventCategory: category,
+            eventCategory: category, 
             eventLabel: label,
             eventAction: action,
             eventValue: value
