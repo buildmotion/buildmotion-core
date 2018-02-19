@@ -1,5 +1,5 @@
 {
-  "name": "buildmotion-core",
+  "name": "@buildmotion/core",
   "version": "3.0.0",
   "description": "An Angular custom module that contains core application items for BuildMotion Angular applications. It relies on the buildmotion-foundation package.",
   "main": "index.js",
