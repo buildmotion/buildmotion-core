@@ -23,6 +23,21 @@
     "paths": {
       "@angular/core": [
         "node_modules/@angular/core"
+      ],
+      "angular-rules-engine": [
+        "node_modules/angular-rules-engine/*"
+      ],
+      "angular-actions": [
+        "node_modules/angular-actions/*"
+      ],
+      "@angular/http": [
+        "node_modules/@angular/http/*"
+      ],
+      "@buildmotion/logging": [
+        "node_modules/@buildmotion/logging/*"
+      ],
+      "@buildmotion/foundation": [
+        "node_modules/@buildmotion/foundation/*"
       ]
     },
     /* Source Map Options */
@@ -35,8 +50,10 @@
     "./src/app/index.ts"
   ],
   "angularCompilerOptions": {
-    "skipTemplateCodegen": true, /* do not produce any *.ngfactory.ts files */
-		"strictMetadataEmit": true,
-		"genDir": "aot-dist"
+    "annotateForClosureCompiler": true,
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "flatModuleOutFile": "buildmotion-core.js",
+    "flatModuleId": "buildmotion-core"
   }
 }

@@ -1,9 +1,9 @@
 import { Router } from '@angular/router';
-import { LoggingService } from 'buildmotion-logging';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import { ServiceContext } from 'angular-rules-engine';
-import { ErrorResponse } from 'buildmotion-foundation';
+import { ErrorResponse } from '@buildmotion/foundation';
+import { LoggingService } from '@buildmotion/logging';
 import { AlertNotification } from './alert/models/alert-notification.model';
 export declare class ComponentBase {
     loggingService: LoggingService;

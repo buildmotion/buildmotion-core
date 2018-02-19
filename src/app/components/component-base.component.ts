@@ -1,13 +1,10 @@
 import { Router, NavigationEnd } from '@angular/router';
-import { LoggingService } from 'buildmotion-logging';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 
-import { MessageType } from 'angular-rules-engine';
-import { ServiceContext } from 'angular-rules-engine';
-import { ServiceMessage } from 'angular-rules-engine';
-import { ErrorResponse } from 'buildmotion-foundation';
-import { Severity } from 'buildmotion-logging';
+import { MessageType, ServiceContext, ServiceMessage } from 'angular-rules-engine';
+import { ErrorResponse } from '@buildmotion/foundation';
+import { LoggingService, Severity } from '@buildmotion/logging';
 import { AlertNotification } from './alert/models/alert-notification.model';
 import { AlertTypes } from './alert/models/alert-types.constants';
 

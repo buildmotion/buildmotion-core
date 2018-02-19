@@ -1,4 +1,8 @@
-import { AlertTypes } from './alert-types.constants';
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { AlertTypes } from "./alert-types.constants";
 var AlertNotification = (function () {
     function AlertNotification(header, title, messages, type) {
         this.type = AlertTypes.Information;
@@ -19,4 +23,16 @@ var AlertNotification = (function () {
     return AlertNotification;
 }());
 export { AlertNotification };
+function AlertNotification_tsickle_Closure_declarations() {
+    /** @type {?} */
+    AlertNotification.prototype.type;
+    /** @type {?} */
+    AlertNotification.prototype.header;
+    /** @type {?} */
+    AlertNotification.prototype.title;
+    /** @type {?} */
+    AlertNotification.prototype.messages;
+    /** @type {?} */
+    AlertNotification.prototype.showAlert;
+}
 //# sourceMappingURL=alert-notification.model.js.map
