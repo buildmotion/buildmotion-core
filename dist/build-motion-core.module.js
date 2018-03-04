@@ -3,18 +3,13 @@
  * @suppress {checkTypes} checked by tsc
  */
 import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { BuildMotionFoundationModule } from "@buildmotion/foundation";
-import { BuildMotionLoggingModule } from "@buildmotion/logging";
 import { AlertComponent } from "./components/alert/alert.component";
 var BuildMotionCoreModule = (function () {
     function BuildMotionCoreModule() {
     }
     BuildMotionCoreModule.decorators = [
         { type: NgModule, args: [{
-                    imports: [
-                        BuildMotionFoundationModule,
-                        BuildMotionLoggingModule
-                    ],
+                    imports: [],
                     declarations: [
                         AlertComponent
                     ],
