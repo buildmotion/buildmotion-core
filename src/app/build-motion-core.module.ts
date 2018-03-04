@@ -2,15 +2,10 @@ import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { BuildMotionFoundationModule } from '@buildmotion/foundation';
-import { BuildMotionLoggingModule } from '@buildmotion/logging';
 import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
-  imports: [
-    BuildMotionFoundationModule,
-    BuildMotionLoggingModule
-  ],
+  imports: [],
   declarations: [
     AlertComponent
   ],
