@@ -5,9 +5,7 @@ import { Router } from '@angular/router';
 import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [],
   declarations: [
     AlertComponent
   ],
